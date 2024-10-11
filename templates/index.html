@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            <div class="message">
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div>
+        <a href="/add">Adicionar</a>
+    </div>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Distância do Sol</th>
+            <th>Número de Satélites</th>
+        </tr>
+        {% for planeta in dados %}
+        <tr>
+            <td>{{planeta.nome}}</td>
+            <td>{{planeta.distancia_sol}}</td>
+            <td>{{planeta.numero_satelites}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+{% block rodape %}
+    &copy; left
+{% endblock %}
